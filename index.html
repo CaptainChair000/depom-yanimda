@@ -5,41 +5,375 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Depom Yanımda - Gizlilik Politikası</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-    h1 { color: #333; }
-    h2 { color: #555; margin-top: 30px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #32323C, #4a4a58);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header .icon {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn:hover, .lang-btn.active {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #32323C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .card-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #32323C;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      color: #555;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: "✓";
+      color: #32323C;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .third-party-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .third-party-item:last-child { border-bottom: none; }
+
+    .third-party-info { display: flex; align-items: center; gap: 12px; }
+
+    .third-party-badge {
+      background: #f0f2f5;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #32323C;
+      white-space: nowrap;
+    }
+
+    .third-party-desc { color: #555; font-size: 0.9rem; }
+
+    a.link {
+      color: #32323C;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+      white-space: nowrap;
+    }
+
+    a.link:hover { border-color: #32323C; }
+
+    .contact-card {
+      background: linear-gradient(135deg, #32323C, #4a4a58);
+      color: white;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-card h2 { font-size: 1.1rem; margin-bottom: 10px; }
+    .contact-card p { opacity: 0.8; font-size: 0.9rem; margin-bottom: 16px; }
+
+    .contact-card a {
+      display: inline-block;
+      background: white;
+      color: #32323C;
+      font-weight: 700;
+      padding: 10px 28px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .badge {
+      background: #f0f2f5;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.8rem;
+      padding-bottom: 40px;
+    }
+
+    .section-tr, .section-en { display: none; }
+    .section-tr.visible, .section-en.visible { display: block; }
   </style>
 </head>
 <body>
-  <h1>Gizlilik Politikası / Privacy Policy</h1>
-  <p><strong>Son güncelleme / Last updated:</strong> 01.04.2026</p>
 
-  <h2>Türkçe</h2>
-  <p>Depom Yanımda uygulaması, kişisel verilerinizi korumayı taahhüt eder.</p>
-  <h3>Toplanan Veriler</h3>
-  <ul>
-    <li>Uygulama içinde girdiğiniz depo, ürün, müşteri ve tedarikçi bilgileri yalnızca cihazınızda yerel olarak saklanır.</li>
-    <li>Hata bildirimi veya özellik önerisi gönderdiğinizde yalnızca girdiğiniz metin ve cihaz tipi (gerçek cihaz/emülatör kontrolü için) iletilir.</li>
-    <li>Kimlik bilgisi, konum, kamera görüntüsü veya kişisel iletişim bilgisi toplanmaz.</li>
-  </ul>
-  <h3>Üçüncü Taraf Hizmetler</h3>
-  <p>Hata bildirimi altyapısı için Supabase kullanılmaktadır. Supabase gizlilik politikası: <a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
-  <h3>İletişim</h3>
-  <p>Sorularınız için: <strong>destek@fomeontr.com</strong></p>
+<header>
+  <div class="icon">📦</div>
+  <h1>Depom Yanımda</h1>
+  <p id="header-sub">Gizlilik Politikası · Son güncelleme: 02.04.2026</p>
+  <div class="lang-switcher">
+    <a class="lang-btn active" onclick="setLang('tr')" href="#">🇹🇷 Türkçe</a>
+    <a class="lang-btn" onclick="setLang('en')" href="#">🇬🇧 English</a>
+  </div>
+</header>
 
-  <hr>
+<div class="container">
 
-  <h2>English</h2>
-  <p>Depom Yanımda is committed to protecting your personal data.</p>
-  <h3>Data Collected</h3>
-  <ul>
-    <li>Warehouse, product, customer and supplier data you enter is stored locally on your device only.</li>
-    <li>When you submit a bug report or feature suggestion, only the text you enter and device type (for emulator/root detection) are transmitted.</li>
-    <li>No identity information, location, camera images or personal contact details are collected.</li>
-  </ul>
-  <h3>Third Party Services</h3>
-  <p>Supabase is used for bug report infrastructure. Supabase privacy policy: <a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
-  <h3>Contact</h3>
-  <p>For questions: <strong>fomeon@example.com</strong></p>
+  <!-- TÜRKÇE -->
+  <div class="section-tr visible" id="tr">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <h2>Verileriniz Güvende</h2>
+      </div>
+      <p>Depom Yanımda, girdiğiniz tüm depo, ürün, müşteri ve tedarikçi bilgilerini yalnızca cihazınızda yerel olarak saklar. Sunucularımıza hiçbir iş verisi gönderilmez.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <h2>Toplanan Veriler</h2>
+      </div>
+      <ul>
+        <li>Depo, ürün, müşteri ve tedarikçi bilgileri yalnızca cihazınızda saklanır</li>
+        <li>Hata bildirimi gönderdiğinizde yalnızca girdiğiniz metin iletilir</li>
+        <li>Cihazın gerçek cihaz mı emülatör mü olduğu güvenlik amacıyla kontrol edilir</li>
+        <li>Konum, kamera görüntüsü veya kişisel iletişim bilgisi toplanmaz</li>
+        <li>Reklam gösterimi için Google AdMob tarafından reklam kimliği (Advertising ID) kullanılabilir</li>
+      </ul>
+      <div class="badge-row">
+        <span class="badge">📍 Konum yok</span>
+        <span class="badge">🎙️ Mikrofon yok</span>
+        <span class="badge">👤 Kimlik verisi yok</span>
+        <span class="badge">☁️ Bulut yedekleme yok</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤝</div>
+        <h2>Üçüncü Taraf Hizmetler</h2>
+      </div>
+      <div class="third-party-item">
+        <div class="third-party-info">
+          <span class="third-party-badge">Supabase</span>
+          <span class="third-party-desc">Hata bildirimi altyapısı</span>
+        </div>
+        <a class="link" href="https://supabase.com/privacy" target="_blank">Politika →</a>
+      </div>
+      <div class="third-party-item">
+        <div class="third-party-info">
+          <span class="third-party-badge">Google AdMob</span>
+          <span class="third-party-desc">Reklam gösterimi</span>
+        </div>
+        <a class="link" href="https://policies.google.com/privacy" target="_blank">Politika →</a>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h2>📬 Bize Ulaşın</h2>
+      <p>Gizlilik ile ilgili sorularınız için</p>
+      <a href="mailto:destek@fomeontr.com">destek@fomeontr.com</a>
+    </div>
+
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="section-en" id="en">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <h2>Your Data is Safe</h2>
+      </div>
+      <p>Depom Yanımda stores all warehouse, product, customer and supplier data locally on your device only. No business data is sent to our servers.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <h2>Data Collected</h2>
+      </div>
+      <ul>
+        <li>Warehouse, product, customer and supplier data is stored on your device only</li>
+        <li>When submitting a bug report, only the text you enter is transmitted</li>
+        <li>Whether the device is real or an emulator is checked for security purposes</li>
+        <li>No location, camera images or personal contact details are collected</li>
+        <li>Google AdMob may use your Advertising ID for ad personalization</li>
+      </ul>
+      <div class="badge-row">
+        <span class="badge">📍 No location</span>
+        <span class="badge">🎙️ No microphone</span>
+        <span class="badge">👤 No identity data</span>
+        <span class="badge">☁️ No cloud backup</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤝</div>
+        <h2>Third Party Services</h2>
+      </div>
+      <div class="third-party-item">
+        <div class="third-party-info">
+          <span class="third-party-badge">Supabase</span>
+          <span class="third-party-desc">Bug report infrastructure</span>
+        </div>
+        <a class="link" href="https://supabase.com/privacy" target="_blank">Policy →</a>
+      </div>
+      <div class="third-party-item">
+        <div class="third-party-info">
+          <span class="third-party-badge">Google AdMob</span>
+          <span class="third-party-desc">Advertisement display</span>
+        </div>
+        <a class="link" href="https://policies.google.com/privacy" target="_blank">Policy →</a>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h2>📬 Contact Us</h2>
+      <p>For privacy related questions</p>
+      <a href="mailto:destek@fomeontr.com">destek@fomeontr.com</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Fomeon · Depom Yanımda · v1.1.0</p>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.section-tr, .section-en').forEach(el => el.classList.remove('visible'));
+    document.getElementById(lang).classList.add('visible');
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('header-sub').textContent = lang === 'tr'
+      ? 'Gizlilik Politikası · Son güncelleme: 02.04.2026'
+      : 'Privacy Policy · Last updated: 02.04.2026';
+  }
+</script>
+
 </body>
 </html>
